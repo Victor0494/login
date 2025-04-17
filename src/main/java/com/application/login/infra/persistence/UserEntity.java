@@ -1,6 +1,6 @@
 package com.application.login.infra.persistence;
 
-import com.application.login.domain.entities.UserLogin;
+import com.application.login.domain.entities.login.UserLogin;
 import jakarta.persistence.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

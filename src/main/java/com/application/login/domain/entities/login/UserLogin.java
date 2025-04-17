@@ -1,4 +1,4 @@
-package com.application.login.domain.entities;
+package com.application.login.domain.entities.login;
 
 import com.application.login.domain.valueObject.Roles;
 import com.application.login.domain.valueObject.TokenJwt;

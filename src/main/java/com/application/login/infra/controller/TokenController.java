@@ -1,10 +1,9 @@
 package com.application.login.infra.controller;
 
 import com.application.login.application.usecases.LoginFromUser;
-import com.application.login.domain.entities.UserLogin;
+import com.application.login.domain.entities.login.UserLogin;
 import com.application.login.infra.controller.dto.LoginRequest;
 import com.application.login.infra.controller.dto.LoginResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

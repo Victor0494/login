@@ -1,13 +1,13 @@
 package com.application.login.application.usecases;
 
-import com.application.login.application.gateways.UserLoginRepository;
-import com.application.login.domain.entities.UserLogin;
+import com.application.login.application.gateways.UserLoginGateway;
+import com.application.login.domain.entities.login.UserLogin;
 
 public class LoginFromUser {
 
-    private final UserLoginRepository userLogin;
+    private final UserLoginGateway userLogin;
 
-    public LoginFromUser(UserLoginRepository userLogin) {
+    public LoginFromUser(UserLoginGateway userLogin) {
         this.userLogin = userLogin;
     }
 

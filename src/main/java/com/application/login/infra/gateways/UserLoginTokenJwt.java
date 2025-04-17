@@ -1,11 +1,10 @@
 package com.application.login.infra.gateways;
 
-import com.application.login.application.gateways.UserLoginRepository;
-import com.application.login.domain.entities.UserLogin;
+import com.application.login.application.gateways.UserLoginGateway;
+import com.application.login.domain.entities.login.UserLogin;
 import com.application.login.domain.valueObject.TokenJwt;
 import com.application.login.infra.persistence.UserEntity;
 import com.application.login.infra.persistence.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
@@ -17,14 +16,19 @@ import java.time.Instant;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
-public class UserLoginTokenJwt implements UserLoginRepository {
+public class UserLoginTokenJwt implements UserLoginGateway {
 
     private final UserRepository userRepository;
 
     private final BCryptPasswordEncoder passwordEncoder;
 
     private final JwtEncoder jwtEncoder;
+
+    public UserLoginTokenJwt(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, JwtEncoder jwtEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtEncoder = jwtEncoder;
+    }
 
     @Override
     public UserLogin login(UserLogin userLogin) {
