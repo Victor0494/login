@@ -3,6 +3,8 @@ package com.application.login.application.usecases;
 import com.application.login.application.gateways.UserGateway;
 import com.application.login.domain.entities.contacts.Contact;
 
+import java.util.List;
+
 public class UserManagement  {
 
     private final UserGateway userGateway;
@@ -13,6 +15,10 @@ public class UserManagement  {
 
     public Contact createContact(Contact contact) {
         return userGateway.createContact(contact);
+    }
+
+    public List<Contact> getListContacts() {
+        return userGateway.getContacts();
     }
 
     public void updateContact(Contact contact) {

@@ -12,12 +12,12 @@ public class Contact {
     private String phone;
 
     public Contact(String name, String phone) {
-        if (!name.matches(NAME_REGEX)) {
-            throw new IllegalArgumentException("Nome inválido.");
-        }
-        if (!phone.matches(PHONE_REGEX)) {
-            throw new IllegalArgumentException("Telefone inválido.");
-        }
+//        if (!name.matches(NAME_REGEX)) {
+//            throw new IllegalArgumentException("Nome inválido.");
+//        }
+//        if (!phone.matches(PHONE_REGEX)) {
+//            throw new IllegalArgumentException("Telefone inválido.");
+//        }
 
         this.name = name;
         this.phone = phone;
