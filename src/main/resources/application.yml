@@ -5,7 +5,7 @@ spring:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: ${DATA_BASE_URL}
+    url: jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}
     username: ${DATA_BASE_USERNAME}
     password: ${DATA_BASE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
