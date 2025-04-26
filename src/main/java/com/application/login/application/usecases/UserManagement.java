@@ -21,8 +21,8 @@ public class UserManagement  {
         return userGateway.getContacts();
     }
 
-    public void updateContact(Contact contact) {
-        userGateway.updateContact(contact);
+    public Contact updateContact(Contact contact, String userId) {
+        return userGateway.updateContact(contact, userId);
     }
 
     public void deleteContact(String contactId) {

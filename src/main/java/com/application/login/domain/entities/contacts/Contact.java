@@ -1,5 +1,7 @@
 package com.application.login.domain.entities.contacts;
 
+import org.springframework.util.ObjectUtils;
+
 import java.util.UUID;
 
 public class Contact {
@@ -21,6 +23,25 @@ public class Contact {
 
         this.name = name;
         this.phone = phone;
+    }
+
+    public void updateContact(String newName, String newPhone) {
+        if(!ObjectUtils.isEmpty(newName) && !this.name.equals(newName)) {
+            this.name = newName;
+        }
+
+        if(!ObjectUtils.isEmpty(newPhone) && !this.phone.equals(newPhone)) {
+            this.phone = newPhone;
+        }
+    }
+
+    public Contact(UUID id, String name, String phone) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+    }
+
+    public Contact() {
     }
 
     public UUID getId() {

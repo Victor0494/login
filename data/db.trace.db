@@ -1,0 +1,6 @@
+2025-04-25 17:41:21.220903-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT [*]IGNORE INTO tb_roles (role_id, name) VALUES (1, 'admin')"; expected "INTO"; SQL statement:
+INSERT IGNORE INTO tb_roles (role_id, name) VALUES (1, 'admin') [42001-232]
+2025-04-25 17:41:46.741145-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_ROLES" not found (this database is empty); SQL statement:
+INSERT INTO tb_roles (role_id, name) VALUES (1, 'admin') [42104-232]

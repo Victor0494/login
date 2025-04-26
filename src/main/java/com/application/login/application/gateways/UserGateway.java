@@ -10,7 +10,7 @@ public interface UserGateway {
 
     List<Contact> getContacts();
 
-    void updateContact(Contact contact);
+    Contact updateContact(Contact contact, String userId);
 
     void deleteContact(String id);
 }

@@ -38,6 +38,15 @@ public class ContactController {
                 .map(contact -> new ContactResponseDto(contact.getId().toString(), contact.getName(), contact.getPhone())).toList());
     }
 
+    @PutMapping("/{userId}")
+    private ResponseEntity<ContactResponseDto> updateContact(@RequestBody ContactRequestDto requestDto,
+                                                             @PathVariable("userId") String userId) {
+        Contact response = userManagement.updateContact(new Contact(requestDto.name(), requestDto.phone()), userId);
+
+        return ResponseEntity
+                .ok(new ContactResponseDto(response.getId().toString(), response.getName(), response.getPhone()));
+    }
+
     @DeleteMapping("/{userId}")
     public ResponseEntity deleteContact(@PathVariable String userId) {
         userManagement.deleteContact(userId);

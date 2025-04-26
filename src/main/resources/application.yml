@@ -1,20 +1,17 @@
 spring:
-  sql:
-    init:
-      mode: always
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: jdbc:mysql://localhost:3306/mydb
-    username: admin
-    password: senha123
+    url: ${DATA_BASE_URL}
+    username: ${DATA_BASE_USERNAME}
+    password: ${DATA_BASE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 jwt:
   public:
-    key: classpath:app.pub
+    key: ${JWT_PUBLIC_KEY_PATH}
   private:
-    key: classpath:app.key
+    key: ${JWT_PRIVATE_KEY_PATH}
