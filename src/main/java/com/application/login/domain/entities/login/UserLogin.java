@@ -8,17 +8,17 @@ import java.util.UUID;
 
 public class UserLogin {
 
-    private UUID id;
+    private String id;
     private String username;
     private String password;
     private Set<Roles> role;
     private TokenJwt token;
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

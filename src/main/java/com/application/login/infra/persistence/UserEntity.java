@@ -14,7 +14,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id")
-    private UUID id;
+    private String id;
 
     @Column(unique = true)
     private String username;
@@ -29,11 +29,11 @@ public class UserEntity {
     private Set<RoleEntity> roleEntities;
 
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
