@@ -2,6 +2,7 @@ package com.application.login.infra.gateways;
 
 import com.application.login.application.gateways.UserLoginGateway;
 import com.application.login.domain.entities.login.UserLogin;
+import com.application.login.domain.valueObject.Roles;
 import com.application.login.domain.valueObject.TokenJwt;
 import com.application.login.infra.persistence.UserEntity;
 import com.application.login.infra.persistence.UserRepository;
@@ -44,6 +45,7 @@ public class UserLoginTokenJwt implements UserLoginGateway {
         var claims = JwtClaimsSet.builder()
                 .issuer("myBackEnd")
                 .subject(user.get().getId().toString())
+                .claim("roles", user.get().getRoles())
                 .expiresAt(now.plusSeconds(expiresIn))
                 .issuedAt(now).build();
         var jwtValue = jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();

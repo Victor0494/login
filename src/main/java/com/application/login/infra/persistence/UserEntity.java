@@ -28,7 +28,6 @@ public class UserEntity {
     )
     private Set<RoleEntity> roleEntities;
 
-
     public String getId() {
         return id;
     }

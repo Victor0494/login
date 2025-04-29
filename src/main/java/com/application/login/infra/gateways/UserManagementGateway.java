@@ -48,7 +48,6 @@ public class UserManagementGateway implements UserGateway {
         return user;
     }
 
-
     @Override
     public void deleteContact(String id) {
         contactRepository.deleteById(id);
