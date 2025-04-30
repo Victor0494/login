@@ -44,8 +44,8 @@ public class UserLoginTokenJwt implements UserLoginGateway {
 
         var claims = JwtClaimsSet.builder()
                 .issuer("myBackEnd")
-                .subject(user.get().getId().toString())
-                .claim("roles", user.get().getRoles())
+                .subject(user.get().getId())
+                .claim("roles", user.get().getRoleEntities())
                 .expiresAt(now.plusSeconds(expiresIn))
                 .issuedAt(now).build();
         var jwtValue = jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();

@@ -1,9 +1,12 @@
 package com.application.login.infra.gateways;
 
+import com.application.login.application.gateways.AuthenticatedUserProvider;
 import com.application.login.application.gateways.UserGateway;
 import com.application.login.domain.entities.contacts.Contact;
+import com.application.login.infra.mapper.ContactEntityMapper;
 import com.application.login.infra.persistence.ContactEntity;
 import com.application.login.infra.persistence.ContactRepository;
+import com.application.login.infra.persistence.UserEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,18 +21,21 @@ public class UserManagementGateway implements UserGateway {
 
     private final ContactRepository contactRepository;
 
-    private final ObjectMapper mapper;
+    private final AuthenticatedUserProvider authenticatedUserProvider;
+
+    private final ContactEntityMapper mapper;
 
     @Override
     public Contact createContact(Contact contact) {
-        ContactEntity contactConverted = mapper.convertValue(contact, ContactEntity.class);
-        return mapper.convertValue(contactRepository.save(contactConverted), Contact.class);
+        ContactEntity contactConverted = mapper.toEntity(contact,
+                UserEntity.builder().id(authenticatedUserProvider.getAuthenticatedUserId()).build());
+        return mapper.toContact(contactRepository.save(contactConverted));
     }
 
     @Override
     public List<Contact> getContacts() {
-        return contactRepository.findAll().stream()
-                .map(entity -> mapper.convertValue(entity, Contact.class)).toList();
+        return contactRepository.findAllByCreatedById(authenticatedUserProvider.getAuthenticatedUserId()).stream()
+                .map(mapper::toContact).toList();
     }
 
     @Override

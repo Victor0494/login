@@ -1,5 +1,6 @@
 package com.application.login.domain.entities.contacts;
 
+import com.application.login.domain.entities.login.UserLogin;
 import org.springframework.util.ObjectUtils;
 
 import java.util.UUID;
@@ -12,6 +13,7 @@ public class Contact {
     private UUID id;
     private String name;
     private String phone;
+    private UserLogin createdBy;
 
     public Contact(String name, String phone) {
 //        if (!name.matches(NAME_REGEX)) {
@@ -66,5 +68,13 @@ public class Contact {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public UserLogin getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(UserLogin createdBy) {
+        this.createdBy = createdBy;
     }
 }

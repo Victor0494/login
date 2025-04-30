@@ -2,6 +2,7 @@ package com.application.login.infra.persistence;
 
 import com.application.login.domain.entities.login.UserLogin;
 import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Set;
@@ -9,6 +10,10 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "tb_users")
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity {
 
     @Id
@@ -27,38 +32,6 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<RoleEntity> roleEntities;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Set<RoleEntity> getRoles() {
-        return roleEntities;
-    }
-
-    public void setRoles(Set<RoleEntity> roleEntities) {
-        this.roleEntities = roleEntities;
-    }
 
     public boolean isLoginCorrect(UserLogin userLogin, PasswordEncoder passwordEncoder) {
         return passwordEncoder.matches(userLogin.getPassword(), this.password);
